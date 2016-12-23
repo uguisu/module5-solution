@@ -1,0 +1,28 @@
+<!-- The sign up form should ask for the following information:
+  first name, last name, email address, and phone number.
+
+  It should also ask the user to specify the menu number that's their favorite dish.
+  (The menu number is the `short_name` attribute of each menu item). -->
+
+<table>
+  <tr>
+    <td>First Name</td>
+    <td><input type="text" placeholder="Input your first name here!" class="inputText" ng-model="signUpCtrl.firstName"></td>
+  </tr>
+  <tr>
+    <td>Last Name</td>
+    <td><input type='text' placeholder="Input your last name here!" class="inputText" ng-model="signUpCtrl.lastName"></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><input type='text' placeholder="Input your Email here!" class="inputText" ng-model="signUpCtrl.email"></td>
+  </tr>
+  <tr>
+    <td>Phone Number</td>
+    <td><input type='text' placeholder="Input your phone number here!" class="inputText" ng-model="signUpCtrl.phone"></td>
+  </tr>
+</table>
+
+
+{{ signUpCtrl.firstName }} , {{ signUpCtrl.lastName}} <br/>
+{{ signUpCtrl.email }} : {{ signUpCtrl.phone }}
