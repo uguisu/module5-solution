@@ -1,8 +1,10 @@
 (function() {
 "use strict";
 
+// https://uguisu-module5.herokuapp.com
+
 angular.module('common', [])
-.constant('ApiPath', 'https://ychaikin-course5.herokuapp.com')
+.constant('ApiPath', 'https://uguisu-module5.herokuapp.com')
 .config(config);
 
 config.$inject = ['$httpProvider'];
