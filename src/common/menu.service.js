@@ -30,27 +30,15 @@ function MenuService($http, ApiPath, ErrorMessagResful) {
   var userInfo = null;
   service.setUserInfo = function(userInfo) {
     service.userInfo = userInfo;
-
-    console.log("service.userInfo", service.userInfo);
-
     return "Your information has been saved";
-  }
+  };
   service.getUserInfo = function() {
     return service.userInfo;
-  }
+  };
 
   service.getMenuItemByshortName = function (shortName) {
-    return $http.get(ApiPath + '/menu_items/' + shortName + '.json')
-      .then(
-        function (response) {
-          return response.data;
-        },
-        function (error) {
-          alert(ErrorMessagResful);
-          console.log(ErrorMessagResful);
-          return null;
-        });
-  }
+    return $http.get(ApiPath + '/menu_items/' + shortName + '.json');
+  };
 
 }
 

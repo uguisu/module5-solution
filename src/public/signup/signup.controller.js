@@ -9,6 +9,7 @@ SignUpController.$inject = ['menuCategories', 'MenuService'];
 function SignUpController(menuCategories, MenuService) {
   var signUpCtrl = this;
 
+  signUpCtrl.savedMsg = "";
   signUpCtrl.menuCategories = menuCategories;
 
   signUpCtrl.submit = function() {
@@ -26,11 +27,18 @@ function SignUpController(menuCategories, MenuService) {
     // (Hint: think service). Once saved, display a message below the form saying `Your information has been saved`.
     var returnMsg = "";
     returnMsg = MenuService.setUserInfo(userInfo);
-    alert(returnMsg);
+    signUpCtrl.savedMsg = returnMsg;
+    // alert(returnMsg);
 
     // Retrieve the menu item the user specified as their favorite
-    var tmp = MenuService.getMenuItemByshortName(signUpCtrl.favoriteItemName);
-    console.log("MenuService.getMenuItemByshortName() returns : ", tmp); //DEBUG
+    MenuService.getMenuItemByshortName(signUpCtrl.favoriteItemName)
+    .then(
+      function (response) {
+        signUpCtrl.errorFlg = false;
+      },
+      function (error) {
+        signUpCtrl.errorFlg = true;
+      });
   }
 
 

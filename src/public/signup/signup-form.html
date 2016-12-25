@@ -66,18 +66,19 @@
           </span>
         </td>
       </tr>
-    </table>
-
-    Your favorite dish:
-    <table>
-      <tr ng-repeat="menuCategory in signUpCtrl.menuCategories">
-        <td><input type="radio" name="favoriteItemList" value="{{menuCategory.short_name}}" ng-model="signUpCtrl.favoriteItemName"></td>
-        <td>{{menuCategory.name}}</td>
+      <tr>
+        <td>Your favorite dish</td>
+        <td>
+          <input type='text' class="inputText" ng-model="signUpCtrl.favoriteItemName">
+          <span ng-show="signUpCtrl.errorFlg">
+            No such menu number exists
+          </span>
+        </td>
       </tr>
     </table>
-
     <br>
     <button ng-disabled="regForm.$invalid"
       ng-click="signUpCtrl.submit()" class="inputText">Submit</button>
+      {{ signUpCtrl.savedMsg }}
   </form>
 </div>
