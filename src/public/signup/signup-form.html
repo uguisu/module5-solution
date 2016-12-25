@@ -69,7 +69,7 @@
   Your favorite dish:
   <table>
     <tr ng-repeat="menuCategory in signUpCtrl.menuCategories">
-      <td><input type="radio" name="favoriteItemList" ng-value="{{menuCategory.short_name}}" ng-model="signUpCtrl.favoriteItemName"></td>
+      <td><input type="radio" name="favoriteItemList" value="{{menuCategory.short_name}}" ng-model="signUpCtrl.favoriteItemName"></td>
       <td>{{menuCategory.name}}</td>
     </tr>
   </table>

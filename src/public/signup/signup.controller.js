@@ -19,6 +19,7 @@ function SignUpController(menuCategories, MenuService) {
     userInfo.lastName = signUpCtrl.lastName;
     userInfo.email = signUpCtrl.email;
     userInfo.phone = signUpCtrl.phone;
+    userInfo.favoriteItemName = signUpCtrl.favoriteItemName;
 
     // If everything is valid, save the user's preference somewhere in your client app such
     // that you can retrieve it in another view/component/controller/etc.
