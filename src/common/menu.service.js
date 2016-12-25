@@ -15,7 +15,6 @@ function MenuService($http, ApiPath) {
     });
   };
 
-
   service.getMenuItems = function (category) {
     var config = {};
     if (category) {
@@ -26,6 +25,31 @@ function MenuService($http, ApiPath) {
       return response.data;
     });
   };
+
+  // uguisu Added
+  var userInfo = {};
+  service.saveUserInfo = function(userInfo) {
+    service.userInfo = userInfo;
+
+    console.log(service.userInfo);
+
+    return "Your information has been saved";
+  }
+
+  service.getMenuItemByshortName = function (shortName) {
+    return $http.get(ApiPath + '/menu_items/' + shortName + '.json')
+      .then(
+        function (response) {
+          return response.data;
+        },
+        function (error) {
+
+          console.log(error);
+
+          alert("No such menu number exists");
+          return null;
+        });
+  }
 
 }
 

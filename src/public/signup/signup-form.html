@@ -4,25 +4,77 @@
   It should also ask the user to specify the menu number that's their favorite dish.
   (The menu number is the `short_name` attribute of each menu item). -->
 
-<table>
-  <tr>
-    <td>First Name</td>
-    <td><input type="text" placeholder="Input your first name here!" class="inputText" ng-model="signUpCtrl.firstName"></td>
-  </tr>
-  <tr>
-    <td>Last Name</td>
-    <td><input type='text' placeholder="Input your last name here!" class="inputText" ng-model="signUpCtrl.lastName"></td>
-  </tr>
-  <tr>
-    <td>Email</td>
-    <td><input type='text' placeholder="Input your Email here!" class="inputText" ng-model="signUpCtrl.email"></td>
-  </tr>
-  <tr>
-    <td>Phone Number</td>
-    <td><input type='text' placeholder="Input your phone number here!" class="inputText" ng-model="signUpCtrl.phone"></td>
-  </tr>
-</table>
+<form name='regForm' novalidate>
+  <table>
+    <tr>
+      <td>First Name</td>
+      <td>
+        <input type="text" placeholder="Input your first name here!" class="inputText" ng-model="signUpCtrl.firstName"
+          name="firstName"
+          required
+          minlength="1"
+          ng-maxlength="10"
+          >
+          <span ng-if="(regForm.firstName.$error.minlength || regForm.firstName.$error.required) && regForm.firstName.$touched">
+            First name must be at least 1 characters long
+          </span>
+          <span ng-if="regForm.firstName.$error.maxlength && regForm.firstName.$touched">
+            First Name must not be longer than 10 characters
+          </span>
+      </td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td>
+        <input type="text" placeholder="Input your last name here!" class="inputText" ng-model="signUpCtrl.lastName"
+          name="lastName"
+          required
+          minlength="1"
+          ng-maxlength="10"
+          >
+          <span ng-if="(regForm.lastName.$error.minlength || regForm.lastName.$error.required) && regForm.lastName.$touched">
+            Last Name must be at least 1 characters long
+          </span>
+          <span ng-if="regForm.lastName.$error.maxlength && regForm.lastName.$touched">
+            Last Name must not be longer than 10 characters
+          </span>
+      </td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>
+        <input type='email' placeholder="Input your Email here!" class="inputText" ng-model="signUpCtrl.email"
+        name="email"
+        required
+        >
+        <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+          Must be a valid email address: handle@domain format
+        </span>
+    </td>
+    </tr>
+    <tr>
+      <td>Phone Number</td>
+      <td>
+        <input type='text' placeholder="Phone ###-###-####" class="inputText" ng-model="signUpCtrl.phone"
+        name="phone"
+        pattern="(\d{3})-(\d{3})-(\d{4})"
+        >
+        <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+          Phone must be in the format ###-###-####.
+        </span>
+      </td>
+    </tr>
+  </table>
 
+  Your favorite dish:
+  <table>
+    <tr ng-repeat="menuCategory in signUpCtrl.menuCategories">
+      <td><input type="radio" name="favoriteItemList" ng-value="{{menuCategory.short_name}}" ng-model="signUpCtrl.favoriteItemName"></td>
+      <td>{{menuCategory.name}}</td>
+    </tr>
+  </table>
 
-{{ signUpCtrl.firstName }} , {{ signUpCtrl.lastName}} <br/>
-{{ signUpCtrl.email }} : {{ signUpCtrl.phone }}
+  <br>
+  <button ng-disabled="regForm.$invalid"
+    ng-click="signUpCtrl.submit()" class="inputText">Submit</button>
+</form>
