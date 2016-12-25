@@ -5,8 +5,8 @@ angular.module('common')
 .service('MenuService', MenuService);
 
 
-MenuService.$inject = ['$http', 'ApiPath'];
-function MenuService($http, ApiPath) {
+MenuService.$inject = ['$http', 'ApiPath', 'ErrorMessagResful'];
+function MenuService($http, ApiPath, ErrorMessagResful) {
   var service = this;
 
   service.getCategories = function () {
@@ -43,10 +43,8 @@ function MenuService($http, ApiPath) {
           return response.data;
         },
         function (error) {
-
-          console.log(error);
-
-          alert("No such menu number exists");
+          alert(ErrorMessagResful);
+          console.log(ErrorMessagResful);
           return null;
         });
   }
