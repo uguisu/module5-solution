@@ -8,10 +8,16 @@
     Email: {{ showUserInfoCtrl.userInfo.email }} <br/>
     Phone: {{ showUserInfoCtrl.userInfo.phone }} <br/>
     Favorite Item:
-      <a ui-sref="public.menuitems({category: showUserInfoCtrl.userInfo.favoriteItemName})">
-        {{ showUserInfoCtrl.userInfo.favoriteItemName }}
-      </a><br/>
-  </div>
+      <!-- <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12"> -->
+        <div class="category-tile">
+          {{showUserInfoCtrl.title}}
+          <img width="200" height="200"
+          ng-src="images/menu/{{showUserInfoCtrl.category_short_name}}/{{showUserInfoCtrl.category_short_name}}.jpg" alt="{{showUserInfoCtrl.title}}">
+
+        </div>
+        <span>{{showUserInfoCtrl.description}}</span>
+      </div>
+  <!-- </div> -->
 
   <div ng-show="{{ showUserInfoCtrl.userInfo === undefined }}">
     Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a>
