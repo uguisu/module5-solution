@@ -27,13 +27,16 @@ function MenuService($http, ApiPath, ErrorMessagResful) {
   };
 
   // uguisu Added
-  var userInfo = {};
-  service.saveUserInfo = function(userInfo) {
+  var userInfo = null;
+  service.setUserInfo = function(userInfo) {
     service.userInfo = userInfo;
 
-    console.log(service.userInfo);
+    console.log("service.userInfo", service.userInfo);
 
     return "Your information has been saved";
+  }
+  service.getUserInfo = function() {
+    return service.userInfo;
   }
 
   service.getMenuItemByshortName = function (shortName) {

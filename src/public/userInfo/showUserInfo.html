@@ -1,0 +1,20 @@
+<div class="container">
+
+  <h2 id="menu-categories-title" class="text-center">My Info</h2>
+
+  <div ng-show="{{ showUserInfoCtrl.userInfo !== undefined }}">
+    First Name: {{ showUserInfoCtrl.userInfo.firstName }} <br/>
+    Last Name: {{ showUserInfoCtrl.userInfo.lastName }} <br/>
+    Email: {{ showUserInfoCtrl.userInfo.email }} <br/>
+    Phone: {{ showUserInfoCtrl.userInfo.phone }} <br/>
+    Favorite Item:
+      <a ui-sref="public.menuitems({category: showUserInfoCtrl.userInfo.favoriteItemName})">
+        {{ showUserInfoCtrl.userInfo.favoriteItemName }}
+      </a><br/>
+  </div>
+
+  <div ng-show="{{ showUserInfoCtrl.userInfo === undefined }}">
+    Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a>
+  </div>
+
+</div>

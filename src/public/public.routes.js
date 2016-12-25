@@ -51,6 +51,18 @@ function routeConfig ($stateProvider) {
           return MenuService.getCategories();
         }]
       }
+    })
+    .state('public.userinfo', {
+      url: '/userinfo',
+      templateUrl: 'src/public/userInfo/showUserInfo.html',
+      controller: 'ShowUserInfoController',
+      controllerAs: 'showUserInfoCtrl',
+      resolve: {
+        userInfo: ['MenuService', function (MenuService) {
+          console.log("MenuService.getUserInfo() will return:", MenuService.getUserInfo());
+          return MenuService.getUserInfo();
+        }]
+      }
     });
 }
 })();

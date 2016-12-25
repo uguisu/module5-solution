@@ -25,7 +25,7 @@ function SignUpController(menuCategories, MenuService) {
     // that you can retrieve it in another view/component/controller/etc.
     // (Hint: think service). Once saved, display a message below the form saying `Your information has been saved`.
     var returnMsg = "";
-    returnMsg = MenuService.saveUserInfo(userInfo);
+    returnMsg = MenuService.setUserInfo(userInfo);
     alert(returnMsg);
 
     // Retrieve the menu item the user specified as their favorite
